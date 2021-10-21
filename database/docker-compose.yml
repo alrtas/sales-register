@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+    backend:
+        image: backoffice-backend
+        ports:
+            - "80:80"
+    database:
+        image: backoffice-db
+        ports:
+            - "3310:3036"
+        environment:
+            MYSQL_ROOT_PASSWORD: root 
+            MYSQL_DATABASE: sales
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+        volumes:
+            db-volume:/var/lib/mysql
+volumes:
+    db-volume:
