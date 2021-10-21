@@ -7,7 +7,7 @@ const connection  = require('./infrastructure/connection')
 const Tables      = require('./infrastructure/tables')
 
 let indexRouter   = require('./routes/index');
-let usersRouter   = require('./routes/users');
+let salesRouter   = require('./routes/sales');
 let sellersRouter = require('./routes/sellers');
 
 var app = express();
@@ -24,15 +24,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 connection.connect((erro)=>{
   if(erro){
-      console.log(erro)
+      console.dir(erro)
   }
   else {
 
     Tables.init(connection)
 
     app.use('/', indexRouter);
-    app.use('/users', usersRouter);
-    app.use('/sellers', sellersRouter)
+    app.use('/sellers', sellersRouter);
+    app.use('/sales', salesRouter)
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
       next(createError(404));
