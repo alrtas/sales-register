@@ -1,11 +1,11 @@
 const connection = require('../infrastructure/connection')
 
 
-class Seller {
+class Sales {
 
   create(seller, res)
   {
-    const sql = 'INSERT INTO Sellers SET ?'
+    const sql = 'INSERT INTO Sales SET ?'
 
     connection.query(sql, seller, (erro, result) =>{
       if(erro)
@@ -17,7 +17,7 @@ class Seller {
 
   get(res)
   {
-    const sql = 'SELECT * FROM Sellers'
+    const sql = 'SELECT * FROM Sales'
 
     connection.query(sql, (erro, results) => {
       if(erro)
@@ -29,7 +29,7 @@ class Seller {
 
   getById(id, res)
   {
-    const sql = `SELECT * FROM Sellers WHERE  idSellers = ${id}`
+    const sql = `SELECT * FROM Sales WHERE  idSales = ${id}`
 
     connection.query(sql, (erro, results) => {
       const result = results[0]
@@ -42,7 +42,7 @@ class Seller {
 
   patch(id, values, res)
   {
-    const sql = 'UPDATE Sellers SET ? WHERE idSellers = ?'
+    const sql = 'UPDATE Sales SET ? WHERE idSales = ?'
 
     connection.query(sql, [values, id], (erro, result) => {  
       if(erro)
@@ -54,7 +54,7 @@ class Seller {
 
   delete(id, res)
   {
-    const sql = 'DELETE FROM Sellers WHERE idSellers = ?'
+    const sql = 'DELETE FROM Sales WHERE idSales = ?'
 
     connection.query(sql,  id, (erro, result) => {        
     if(erro)
@@ -66,4 +66,4 @@ class Seller {
 }
 
 
-module.exports = new Seller
+module.exports = new Sales
