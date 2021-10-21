@@ -27,4 +27,19 @@ Considering the three main priorities previously described in Case description, 
 ## Stack
 * Front-end (?)
 * Back-end: Node.js
+   * APIs desenvolvidas
+      * Seller
+        * Create a Seller (post)
+        * Get a Seller (get)
+        * Get a Seller by ID (get)
+        * Get a list of Sellers sorts by numbers of sales (get)
+        * Get a list of Sellers sorts by amount of value in sales (get)
+        * Update a Seller (patch)
+        * Delete a Seller (delete)
+      * Sales
+        * Create a Sales (post)
+        * Get a Sales (get)
+        * Get a Sales by ID (get)
+        * Update a Sales (patch)
+        * Delete a Sales (delete)  
 * DataBase: mySQL
