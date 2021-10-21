@@ -1,4 +1,4 @@
-# Chalenge
+# Challenge
 ## Case description 
 Consider that a customer approached you with a need to better manage the sales occurring in his company/department. In the present day, this customer has to gather information from several excel spreadsheets, rank and consolidate it in one of his own every week, so he can pay bonuses according to sales rank. To begin tackling the problem, he suggests that the main priorities to him are: 
 
@@ -21,3 +21,10 @@ Premises:
 Considering the three main priorities previously described in Case description, prepare two or three slide (to be delivered in pdf or Google Presentation) pages answering the following: 
 - What technologies you would use for the front-end, back-end and database and why did you choose them to build this prototype? 
 - How much time would you estimate for building this prototype, considering you're the only developer working on it ?
+
+# Solution
+
+## Stack
+* Front-end (?)
+* Back-end: Node.js
+* DataBase: mySQL
