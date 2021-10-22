@@ -25,20 +25,41 @@ Considering the three main priorities previously described in Case description, 
 # Solution
 
 ## Stack
-* Front-end (?)
-* Back-end: Node.js
-   * APIs desenvolvidas
-      * Seller
-        * Create a Seller (post)
-        * Get a Seller (get)
-        * Get a Seller by ID (get)
-        * Get a list of Sellers sorts by amount of value in sales (get)
-        * Update a Seller (patch)
-        * Delete a Seller (delete)
-      * Sales
-        * Create a Sales (post)
-        * Get a Sales (get)
-        * Get a Sales by ID (get)
-        * Update a Sales (patch)
-        * Delete a Sales (delete)  
-* DataBase: mySQL
+### Front-end (?)
+### Back-end:
+For this part, we work with Node.JS, since the application can be accessed by APP, Web Page or other forms of access, I developed 2 REST endpoints to help and also decouple the various front-end possibilities.
+**Endpoints** - [Download Postman collection](https://github.com/alrtas/sales-register-api/files/7401626/Sales-register.postman_collection.json.zip)
+* Seller
+  * [POST] Create a Seller 
+  * [GET] View all sellers
+  * [GET] View a Seller filtering by ID 
+  * [GET] Retrieve a list of Sellers sorts by amount of value in sales
+  * [PATCH] Update a Seller
+  * [DELETE] Remove a Seller 
+* Sales
+  * [POST] Create a Sale
+  * [GET] Retrieve all Sales
+  * [GET] View a Sale filtering by ID
+  * [PATCH] Update a Sale
+  * [DELETE] Remove a Sale  
+### DataBase: 
+For the database we are using MySQL in a Docker. Following the structure below:
+
+**Sales Schema** > **Seller Table**
+| idSellers | name  | phone | office |
+| :---:     | :---: | :---: |  :---: |
+| 1 | Seller 1 | Phone 1 | Office 1 |
+| 2 | Seller 2 | Phone 2 | Office 2 |
+| 3 | Seller 3 | Phone 3 | Office 3 |
+| 4 | Seller 4 | Phone 4 | Office 4 |
+| 5 | Seller 5 | Phone 5 | Office 5 |
+
+
+**Sales Schema** > **Sales Table**
+| idSales | sellerName  | customerName | dateOfSale | saleItemName | saleValue |
+|  :---:  |    :---:    |     :---:    |    :---:   |    :---:     |   :---:   |
+| 1 | Seller 1 | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 1  | Value X|
+| 2 | Seller 2 | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 2  | Value Y|
+| 3 | Seller 1 | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 2  | Value Y|
+| 4 | Seller 1 | Customer 5 | YYYY-MM-DDTHH:mm:ssZ | Item 17 | Value X|
+| 5 | Seller 3 | Customer 4 | YYYY-MM-DDTHH:mm:ssZ | Item 3  | Value P|
