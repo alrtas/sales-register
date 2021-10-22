@@ -20,9 +20,10 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 
-  const sale = req.body
-  Sales.create(sale, res)
+  const Sellers = require('../models/sellers')
+  const sale    = req.body
 
+  Sellers.getByName(sale, res)
   //Nao tem validacao contra SQL Injection e erros sugestivos
 })
 
