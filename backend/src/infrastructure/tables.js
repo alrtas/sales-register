@@ -18,7 +18,7 @@ class Tables {
   }
 
   createSales() {
-    const sql = 'CREATE TABLE IF NOT EXISTS Sales (`idSales` INT NOT NULL AUTO_INCREMENT,`sellerName` VARCHAR(100) NOT NULL,`customerName` VARCHAR(100) NOT NULL,`dateOfSale` VARCHAR(45) NOT NULL,`saleItemName` VARCHAR(100) NOT NULL,`saleValue` VARCHAR(45) NOT NULL,PRIMARY KEY (`idSales`));'
+    const sql = 'CREATE TABLE IF NOT EXISTS Sales (`idSales` INT NOT NULL AUTO_INCREMENT,`sellerName` VARCHAR(100) NOT NULL,`customerName` VARCHAR(100) NOT NULL,`dateOfSale` VARCHAR(45) NOT NULL,`saleItemName` VARCHAR(100) NOT NULL,`saleValue` DECIMAL(45) NOT NULL,PRIMARY KEY (`idSales`));'
     this.connection.query(sql, (erro)=>{
       if(erro){
           console.dir(erro)

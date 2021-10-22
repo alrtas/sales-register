@@ -3,7 +3,11 @@ var router = express.Router();
 
 const Sellers = require('../models/sellers')
 
-/* GET users listing. */
+router.get('/values-list', function(req, res, next) {
+  Sellers.getValuesList(res)
+});
+
+
 router.get('/', function(req, res, next) {
   Sellers.get(res)
 });
