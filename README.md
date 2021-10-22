@@ -43,7 +43,10 @@ For this part, we work with Node.JS, since the application can be accessed by AP
   * [PATCH] Update a Sale
   * [DELETE] Remove a Sale  
 ### DataBase: 
-For the database we are using MySQL in a Docker. Following the structure below:
+For the database we are using MySQL in a Docker. 
+Why MysSQL, you may ask,.....
+
+Following the structure below:
 
 **Sales Schema** > **Seller Table**
 | idSellers | name  | phone | office |
