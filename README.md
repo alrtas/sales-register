@@ -1,3 +1,13 @@
+# Table of contents
+* [Challenge](#challenge)
+* [Solution](#solution)
+* [How to run]()
+* [The whys...?]()
+* [LinkedIn Profile](https://www.linkedin.com/in/alrtas/)
+
+
+
+
 # Challenge
 ## Case description 
 Consider that a customer approached you with a need to better manage the sales occurring in his company/department. In the present day, this customer has to gather information from several excel spreadsheets, rank and consolidate it in one of his own every week, so he can pay bonuses according to sales rank. To begin tackling the problem, he suggests that the main priorities to him are: 
