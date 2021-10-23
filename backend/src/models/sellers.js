@@ -1,4 +1,3 @@
-const { resolveTxt } = require('dns')
 const connection = require('../infrastructure/connection')
 
 
