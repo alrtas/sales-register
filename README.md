@@ -34,26 +34,39 @@ Considering the three main priorities previously described in Case description, 
 
 # Solution
 
+To better explain a little bit of the solution building process, first, we start from the principle of an application made to run in the cloud, so because of that we will use Dockers to run the applications.
+
+Defined that we will use dockers, first we build the docker responsible for uploading a database, using MySQL, by default the responsible DockerFile only Creates the `Sales` Schema and also the users and password, if necessary to access the database via workbench or other software it will be possible to check the username and password in the DockerFile file or later in the backend connection file. The `Sales` and `Sellers` tables as well as the creation of 5 sells will be done via the backend.
+
+For the Backend, we will also have a Docker that will run a Nodejs/Express application, where it will connect to the Database Docker using the IP `172.17.0.1`, if the database does not have this IP, it does if necessary change the IP in the `path-to-project\backend\src\infrastructure\connection.js` file, as well as other connection details, once connected the backend will create the `Sales` and `Sellers` tables if necessary. they do not yet exist and then will create 5 sellers already pre-defined as the table below will show, also only if they do not exist. After all the database connection is OK, the Backend will provide **2 endpoints**, a CRUD for the Sales entity and also a CRUD for the Sellers entity. In the POST option (Creation) of a Sale there is a business rule that validates if the name of the seller passed on the body matches any seller name already in the Sellers base. And there is an additional 1 path within the Sellers endpoint that lists, in order from largest to smallest, the sellers with the greatest sum of sales.
+
+To complete the challenge, in Frontend there is another application (Docker) running in Python that implements a simple CLI system, where it is possible to create a Sale and it is also possible to show a list of sellers with the highest sum of sales value
+
+
 ## Stack
-### Front-end (?)
+### Front-end:
+
+* CLI (**Python**)
+  * Consumes [POST] Create a Sale *and* [GET] Retrieve a list of Sellers sorts by amount of value in sales
+* WEB (**React.js**)
+
 ### Back-end:
-For this part, we work with Node.JS, since the application can be accessed by APP, Web Page or other forms of access, I developed 2 REST endpoints to help and also decouple the various front-end possibilities.
 **Endpoints** - [Download Postman collection](https://github.com/alrtas/sales-register-api/files/7401626/Sales-register.postman_collection.json.zip)
-* Seller
+* Seller (**Node.js**)
   * [POST] Create a Seller 
   * [GET] View all sellers
   * [GET] View a Seller filtering by ID 
   * [GET] Retrieve a list of Sellers sorts by amount of value in sales
   * [PATCH] Update a Seller
   * [DELETE] Remove a Seller 
-* Sales
+* Sales (**Node.js**)
   * [POST] Create a Sale
   * [GET] Retrieve all Sales
   * [GET] View a Sale filtering by ID
   * [PATCH] Update a Sale
   * [DELETE] Remove a Sale  
 ### DataBase: 
-For the database we are using MySQL in a Docker. 
+For the database we are using (**MySQL**) in a Docker. 
 Why MysSQL, you may ask,.....
 
 Following the structure below:
