@@ -71,8 +71,50 @@ Following the structure below:
 **Sales Schema** > **Sales Table**
 | idSales | sellerName  | customerName | dateOfSale | saleItemName | saleValue |
 |  :---:  |    :---:    |     :---:    |    :---:   |    :---:     |   :---:   |
-| 1 | Seller 1 | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 1  | Value X|
-| 2 | Seller 2 | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 2  | Value Y|
-| 3 | Seller 1 | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 2  | Value Y|
-| 4 | Seller 1 | Customer 5 | YYYY-MM-DDTHH:mm:ssZ | Item 17 | Value X|
-| 5 | Seller 3 | Customer 4 | YYYY-MM-DDTHH:mm:ssZ | Item 3  | Value P|
+| 1 | Thiago Alberto | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 1  | Value X|
+| 2 | Pedro Henrique | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 2  | Value Y|
+| 3 | Valmir Paz     | Customer 1 | YYYY-MM-DDTHH:mm:ssZ | Item 2  | Value Y|
+| 4 | Romario Costa  | Customer 5 | YYYY-MM-DDTHH:mm:ssZ | Item 17 | Value X|
+| 5 | Renato Sousa   | Customer 4 | YYYY-MM-DDTHH:mm:ssZ | Item 3  | Value P|
+
+
+
+# How to run
+
+The Project was divided into four parts (Each respectively in its docker), The IP addresses are hard-coded inside the application, if it is necessary to change it according to the configuration of your machine, if it is running without customizations in the docker, you must instantiate the Docker responsible for the Database first and then the docker responsible for the backend so that they keep their respective IPs
+
+|      IP     |  Port  |      Docker      | 
+|    :----:   | :----: |      :----:      |
+| 172.17.0.1  |  3306  |  shopee-database |
+| 172.17.0.2  |  3000  |  shopee-backend  |
+| 172.17.0.x  |  3012  |  shopee-cli      |
+| 172.17.0.x  |  3300  |  shopee-web      |
+
+To facilitate the process of running the containers, there is a MakeFile in each folder of the structure so below is an instruction on how to run all the containers.
+
+|                  Path                   |            Command          |      Docker     |
+|                  :---:                  |            :---:            |       :---:     |
+| cd ./path-to-project/database/          | .\make setup  > .\make run  | shopee-database | 
+| cd ./path-to-project/backend/           | .\make setup  > .\make run  | shopee-backend  | 
+| cd ./path-to-project/frontend/cli/      | .\make setup  > .\make run  | shopee-cli      | 
+| cd ./path-to-project/frontend/web/      | .\make setup  > .\make run  | shopee-web      | 
+
+If you are on windows you may need to install [cgwin32](https://www.filehorse.com/download-cygwin-32/) e rodar o comando dentro da pasta que possui o makefile usando a semantica `.\make setup` which will create the docker and download the necessary dependencies e `.\make run` that will run the image created in your docker, of course for this you need to have the docker installed and running on your machine, here is a [link](https://www.docker.com/get-started) to help with the installation if necessary.
+ 
+ Make sure the first two containers are in this order
+ ![image](https://user-images.githubusercontent.com/32065208/138573517-24a31a44-12a4-4396-a2c6-4520a8d47208.png)
+
+ 
+Once all dockers have been started correctly you will be able to use the developed services, such as accessing the database via WorkBench or another one of your preferences, consuming the APIs created in the Backend (using the postman file placed above) test what was prompted via command line that I'll show with images now
+* ![image](https://user-images.githubusercontent.com/32065208/138573685-1bd9d1d4-3d94-4644-8b61-d43b1a39a868.png)
+* ![image](https://user-images.githubusercontent.com/32065208/138573695-f58ef480-eabb-47e2-995c-9f31bfa88510.png)
+
+
+Now we will register a new sale by the application made in Python, where at the end it will call the BackEnd API that creates a sale and inserts the respective one in the database, followed by the option that shows the list of sellers sorted by sum of value sold which is also searched via the Backend API that makes a custom query in the database:
+* ![image](https://user-images.githubusercontent.com/32065208/138573734-ad8c1cec-802e-4fcb-9502-891221723ecb.png)
+
+If you try to make a sale with a different vendor name than the one that is initialized or created via API, the CLI will decline the insertion with the following message
+
+* ![image](https://user-images.githubusercontent.com/32065208/138573770-5afd067d-317b-4f5c-a32f-80465b0d964b.png)
+
+
