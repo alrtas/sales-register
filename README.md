@@ -117,7 +117,7 @@ To facilitate the process of running the containers, there is a MakeFile in each
 
 |                  Path                   |            Command          |      Docker     |
 |                  :---:                  |            :---:            |       :---:     |
-| cd ./path-to-project/                   | .\make network > y          | shopee--network |          
+| cd ./path-to-project/                   | .\make network > y          | shopee-network |          
 | cd ./path-to-project/database/          | .\make setup  > .\make run  | shopee-database | 
 | cd ./path-to-project/backend/           | .\make setup  > .\make run  | shopee-backend  | 
 | cd ./path-to-project/frontend/cli/      | .\make setup  > .\make run  | shopee-cli      | 
