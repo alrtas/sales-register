@@ -1,4 +1,4 @@
-APP_VERSION = 1.0.8
+APP_VERSION = 1.1.3
 APP_NAME    = shopee-web
 
 # DOCKER TASKS
