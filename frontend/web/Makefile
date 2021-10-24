@@ -1,4 +1,4 @@
-APP_VERSION = 1.1.3
+APP_VERSION = 1.1.12
 APP_NAME    = shopee-web
 
 # DOCKER TASKS
@@ -9,7 +9,7 @@ setup:
 
 # Run the container
 run: 
-	@docker run -dit --rm -p 3013:3000 --name $(APP_NAME) $(APP_NAME):v$(APP_VERSION)
+	@docker run -dit --rm -p 3013:3000 --net shopee-network --ip 172.18.0.9 --name $(APP_NAME) $(APP_NAME):v$(APP_VERSION)
 
 
 version: ## Output the current version

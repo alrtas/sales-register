@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   getSellers(){
-    fetch('http://172.17.0.2:3000/sellers/values-list/')
+    fetch('http://127.0.0.1:3000/sellers/values-list/')
       .then(response => response.json())
       .then(items => {
         this.setState(({
@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   getItems(){
-    fetch('http://172.17.0.2:3000/sales/')
+    fetch('http://127.0.0.1:3000/sales/')
       .then(response => response.json())
       .then(items => {
         this.setState({items})

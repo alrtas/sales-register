@@ -13,12 +13,11 @@ class AddEditForm extends React.Component {
 
   onChange = e => {
     this.setState({[e.target.name]: e.target.value})
-    console.log(e.target)
   }
 
   submitFormAdd = e => {
     e.preventDefault()
-    fetch('http://172.17.0.2:3000/sales', {
+    fetch('http://127.0.0.1:3000/sales/', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -33,7 +32,6 @@ class AddEditForm extends React.Component {
     })
       .then(response => response.json())
       .then(item => {
-        console.log(item)
         if(item.affectedRows){
           this.props.addItemToState(this.state)
           this.props.toggle()
@@ -46,7 +44,7 @@ class AddEditForm extends React.Component {
 
   submitFormEdit = e => {
     e.preventDefault()
-    fetch(`http://172.17.0.2:3000/sales/${this.state.idSales}`, {
+    fetch(`http://127.0.0.1:3000/sales/${this.state.idSales}`, {
       method: 'patch',
       headers: {
         'Content-Type': 'application/json',

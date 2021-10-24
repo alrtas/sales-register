@@ -6,8 +6,7 @@ class DataTable extends Component {
   deleteItem = idSales => {
     let confirmDelete = window.confirm('Delete sale forever?')
     if(confirmDelete){
-      console.log(idSales)
-      fetch(`http://172.17.0.2:3000/sales/${idSales}`, {
+      fetch(`http://127.0.0.1:3000/sales/${idSales}`, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json'
@@ -64,5 +63,6 @@ class DataTable extends Component {
     )
   }
 }
+
 
 export default DataTable

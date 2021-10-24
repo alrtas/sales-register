@@ -5,13 +5,12 @@ app = Flask(__name__)
 
 
 
-
 def register(sale):
-  URL = (f"http://172.17.0.2:3000/sales/")
+  URL = (f"http://172.18.0.3:3000/sales/")
   return requests.post(URL, json=sale)
 
 def retriveSellers():
-  URL = (f"http://172.17.0.2:3000/sellers/values-list/")
+  URL = (f"http://172.18.0.3:3000/sellers/values-list/")
   return requests.get(URL)
 
 

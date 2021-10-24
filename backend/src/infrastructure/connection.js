@@ -1,9 +1,15 @@
 const mysql = require('mysql')
 
+require('dotenv').config()
+const mysql_ip    = process.env.MYSQL_IP
+const mysql_port  = process.env.MYSQL_PORT
+
+console.log(mysql_ip)
+console.log(mysql_port)
+
 const connection = mysql.createConnection({
-    //host : 'localhost',
-    host : '172.17.0.1',
-    port : 3306,
+    host : mysql_ip,
+    port : mysql_port,
     user : 'root',
     password : 'RootPassword',
     database : 'Sales'
