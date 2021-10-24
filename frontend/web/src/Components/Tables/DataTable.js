@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap';
-import ModalForm from '../Modals/Modal'
+// import ModalForm from '../Modals/Modal'
 
 class DataTable extends Component {
   deleteItem = idSales => {
