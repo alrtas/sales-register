@@ -1,5 +1,5 @@
-APP_VERSION = 1.2.25
-APP_NAME    = shopee-backend
+APP_VERSION = 1.1.3
+APP_NAME    = shopee-web
 
 # DOCKER TASKS
 # Build the container
@@ -9,7 +9,7 @@ setup:
 
 # Run the container
 run: 
-	@docker run -dit --rm -p 3000:3000 --name $(APP_NAME) $(APP_NAME):v$(APP_VERSION)
+	@docker run -dit --rm -p 3013:3000 --name $(APP_NAME) $(APP_NAME):v$(APP_VERSION)
 
 
 version: ## Output the current version
