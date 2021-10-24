@@ -1,4 +1,4 @@
-APP_VERSION = 1.2.15
+APP_VERSION = 1.2.16
 APP_NAME    = shopee-backend
 
 # DOCKER TASKS
