@@ -40,15 +40,24 @@ Defined that we will use dockers, first we build the docker responsible for uplo
 
 For the Backend, we will also have a Docker that will run a Nodejs/Express application, where it will connect to the Database Docker using the IP `172.17.0.1`, if the database does not have this IP, it does if necessary change the IP in the `path-to-project\backend\src\infrastructure\connection.js` file, as well as other connection details, once connected the backend will create the `Sales` and `Sellers` tables if necessary. they do not yet exist and then will create 5 sellers already pre-defined as the table below will show, also only if they do not exist. After all the database connection is OK, the Backend will provide **2 endpoints**, a CRUD for the Sales entity and also a CRUD for the Sellers entity. In the POST option (Creation) of a Sale there is a business rule that validates if the name of the seller passed on the body matches any seller name already in the Sellers base. And there is an additional 1 path within the Sellers endpoint that lists, in order from largest to smallest, the sellers with the greatest sum of sales.
 
-To complete the challenge, in Frontend there is another application (Docker) running in Python that implements a simple CLI system, where it is possible to create a Sale and it is also possible to show a list of sellers with the highest sum of sales value
+To complete the challenge, in Frontend there is another application (Docker) running in Python that implements a simple CLI system, where it is possible to create a Sale and it is also possible to show a list of sellers with the highest sum of sales value. In addition now I created an app in react.js to illustrate the ability to integrate the backend with the web interface, a rereading of the script in python but for the web.
 
 
 ## Stack
 ### Front-end:
 
 * CLI (**Python**)
-  * Consumes [POST] Create a Sale *and* [GET] Retrieve a list of Sellers sorts by amount of value in sales
+  * Consumes 
+    * [POST] Create a Sale 
+    * [GET] Retrieve a list of Sellers sorts by amount of value in sales
 * WEB (**React.js**)
+  * Consumes
+    * [POST] Create a Sale 
+    * [GET] Retrieve all Sales
+    * [GET] View a Sale filtering by ID
+    * [PATCH] Update a Sale
+    * [DELETE] Remove a Sale  
+    * [GET] Retrieve a list of Sellers sorts by amount of value in sales
 
 ### Back-end:
 **Endpoints** - [Download Postman collection](https://github.com/alrtas/sales-register-api/files/7401626/Sales-register.postman_collection.json.zip)
@@ -98,15 +107,17 @@ The Project was divided into four parts (Each respectively in its docker), The I
 
 |      IP     |  Port  |      Docker      | 
 |    :----:   | :----: |      :----:      |
-| 172.17.0.1  |  3306  |  shopee-database |
-| 172.17.0.2  |  3000  |  shopee-backend  |
-| 172.17.0.x  |  3012  |  shopee-cli      |
-| 172.17.0.x  |  3300  |  shopee-web      |
+| 172.18.0.2  |  3306  |  shopee-database |
+| 172.18.0.3  |  3000  |  shopee-backend  |
+| 172.18.0.10 |  3012  |  shopee-cli      |
+| 172.18.0.11 |  3300  |  shopee-web      |
 
 To facilitate the process of running the containers, there is a MakeFile in each folder of the structure so below is an instruction on how to run all the containers.
+### It is very important that the following commands are done in the same order.
 
 |                  Path                   |            Command          |      Docker     |
 |                  :---:                  |            :---:            |       :---:     |
+| cd ./path-to-project/                   | .\make network > y          | shopee-network |          
 | cd ./path-to-project/database/          | .\make setup  > .\make run  | shopee-database | 
 | cd ./path-to-project/backend/           | .\make setup  > .\make run  | shopee-backend  | 
 | cd ./path-to-project/frontend/cli/      | .\make setup  > .\make run  | shopee-cli      | 
