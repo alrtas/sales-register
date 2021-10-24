@@ -1,9 +1,10 @@
 # Table of contents
 * [Challenge](#challenge)
 * [Solution](#solution)
-  * [Disclaimer]()  
-* [How to run]()
-* [The whys...?]()
+  * [Disclaimer](#disclaimer)  
+* [How to run](#how-to-run)
+* [The whys...?](#the-whys)
+* [Deadlines](#deadlines)
 * [LinkedIn Profile](https://www.linkedin.com/in/alrtas/)
 
 
@@ -44,7 +45,7 @@ For the Backend, we will also have a Docker that will run a Nodejs/Express appli
 To complete the challenge, in Frontend there is another application (Docker) running in Python that implements a simple CLI system, where it is possible to create a Sale and it is also possible to show a list of sellers with the highest sum of sales value
 
 ## Disclaimer
-
+Due to the time given and invested in the project, only the minimum for a visual version was completed, so it is not even close to a productive version. Simple but time-consuming items are missing, such as validation of inputs on the front end, better detail in the construction of the front end, 100% code coverage of all services, or something simpler like the IP of the servers, is coded in the application while should be something more dynamic, front end calls backend directly without going through a gateway api to provide security, caching...
 
 ## Stack
 ### Front-end:
@@ -137,3 +138,26 @@ In addition, another service (docker) was also developed using React.js to creat
 ![image](https://user-images.githubusercontent.com/32065208/138577748-bf5b83f5-d702-4c89-8079-c0242272f688.png)
 
 # The Whys
+
+
+* ## JavaScript
+  * Among the advantages of using this language in all layers of an application, the clearest is standardization: with everything being written in JavaScript, the uniformity of the language is greater and the work is more comprehensive for those involved in the project, be it a front-end, back-end or full stack dev.
+  * And if a programmer understands the fundamentals of the language well, he will be able to write in all layers as well, reducing bottlenecks where development stalls because half the team waits for the back-end people to finish something, for example.
+  * If a team is good at JavaScript, it's already a step for everyone to be, in a way, full stack, that is, able to work in both layers of the application. And a full stack team is more versatile, agile and better understands the product as a whole.
+  * Another very significant advantage is the possibility of reusing the code. Reusing code snippets that have already been made is a way to reduce the workload of developers and speed up project completion.
+  * And with MongoDB, you can even use JavaScript in the database. This actually makes all the flow of an object in an application to be done with JavaScript.
+  * You can take input into the browser with JavaScript, transport the demand to the back end still with the language, and finally save an object in MongoDB still with JavaScript. Of course, reverse flow will also be just as practical.
+
+* ## Python
+  * Was chosen to make the CLI just to present the advantages of working with the backend decoupled from the frontend 
+
+* ## MySQL
+  * Security
+  * Open code
+  * Ease of use
+  * Compatibility
+  * Community support 
+
+
+# DeadLines
+To confidently complete the project I would estimate 2 iterations of 2 weeks each (30 days or so), taking into account all the missing points...
