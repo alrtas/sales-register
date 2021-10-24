@@ -1,10 +1,8 @@
 # Table of contents
 * [Challenge](#challenge)
 * [Solution](#solution)
-  * [Disclaimer](#disclaimer)  
-* [How to run](#how-to-run)
-* [The whys...?](#the-whys)
-* [Deadlines](#deadlines)
+* [How to run]()
+* [The whys...?]()
 * [LinkedIn Profile](https://www.linkedin.com/in/alrtas/)
 
 
@@ -42,17 +40,24 @@ Defined that we will use dockers, first we build the docker responsible for uplo
 
 For the Backend, we will also have a Docker that will run a Nodejs/Express application, where it will connect to the Database Docker using the IP `172.17.0.1`, if the database does not have this IP, it does if necessary change the IP in the `path-to-project\backend\src\infrastructure\connection.js` file, as well as other connection details, once connected the backend will create the `Sales` and `Sellers` tables if necessary. they do not yet exist and then will create 5 sellers already pre-defined as the table below will show, also only if they do not exist. After all the database connection is OK, the Backend will provide **2 endpoints**, a CRUD for the Sales entity and also a CRUD for the Sellers entity. In the POST option (Creation) of a Sale there is a business rule that validates if the name of the seller passed on the body matches any seller name already in the Sellers base. And there is an additional 1 path within the Sellers endpoint that lists, in order from largest to smallest, the sellers with the greatest sum of sales.
 
-To complete the challenge, in Frontend there is another application (Docker) running in Python that implements a simple CLI system, where it is possible to create a Sale and it is also possible to show a list of sellers with the highest sum of sales value
+To complete the challenge, in Frontend there is another application (Docker) running in Python that implements a simple CLI system, where it is possible to create a Sale and it is also possible to show a list of sellers with the highest sum of sales value. In addition now I created an app in react.js to illustrate the ability to integrate the backend with the web interface, a rereading of the script in python but for the web.
 
-## Disclaimer
-Due to the time given and invested in the project, only the minimum for a visual version was completed, so it is not even close to a productive version. Simple but time-consuming items are missing, such as validation of inputs on the front end, better detail in the construction of the front end, 100% code coverage of all services, or something simpler like the IP of the servers, is coded in the application while should be something more dynamic, front end calls backend directly without going through a gateway api to provide security, caching...
 
 ## Stack
 ### Front-end:
 
 * CLI (**Python**)
-  * Consumes [POST] Create a Sale *and* [GET] Retrieve a list of Sellers sorts by amount of value in sales
+  * Consumes 
+    * [POST] Create a Sale 
+    * [GET] Retrieve a list of Sellers sorts by amount of value in sales
 * WEB (**React.js**)
+  * Consumes
+    * [POST] Create a Sale 
+    * [GET] Retrieve all Sales
+    * [GET] View a Sale filtering by ID
+    * [PATCH] Update a Sale
+    * [DELETE] Remove a Sale  
+    * [GET] Retrieve a list of Sellers sorts by amount of value in sales
 
 ### Back-end:
 **Endpoints** - [Download Postman collection](https://github.com/alrtas/sales-register-api/files/7401626/Sales-register.postman_collection.json.zip)
@@ -102,15 +107,17 @@ The Project was divided into four parts (Each respectively in its docker), The I
 
 |      IP     |  Port  |      Docker      | 
 |    :----:   | :----: |      :----:      |
-| 172.17.0.1  |  3306  |  shopee-database |
-| 172.17.0.2  |  3000  |  shopee-backend  |
-| 172.17.0.x  |  3012  |  shopee-cli      |
-| 172.17.0.x  |  3300  |  shopee-web      |
+| 172.18.0.2  |  3306  |  shopee-database |
+| 172.18.0.3  |  3000  |  shopee-backend  |
+| 172.18.0.10 |  3012  |  shopee-cli      |
+| 172.18.0.11 |  3300  |  shopee-web      |
 
 To facilitate the process of running the containers, there is a MakeFile in each folder of the structure so below is an instruction on how to run all the containers.
+### It is very important that the following commands are done in the same order.
 
 |                  Path                   |            Command          |      Docker     |
 |                  :---:                  |            :---:            |       :---:     |
+| cd ./path-to-project/                   | .\make network > y          | shopee--network |          
 | cd ./path-to-project/database/          | .\make setup  > .\make run  | shopee-database | 
 | cd ./path-to-project/backend/           | .\make setup  > .\make run  | shopee-backend  | 
 | cd ./path-to-project/frontend/cli/      | .\make setup  > .\make run  | shopee-cli      | 
@@ -137,27 +144,3 @@ If you try to make a sale with a different vendor name than the one that is init
 In addition, another service (docker) was also developed using React.js to create a simple interface where it is possible to create and edit sales as well as see the results of the best sellers.
 ![image](https://user-images.githubusercontent.com/32065208/138577748-bf5b83f5-d702-4c89-8079-c0242272f688.png)
 
-# The Whys
-
-
-* ## JavaScript
-  * Among the advantages of using this language in all layers of an application, the clearest is standardization: with everything being written in JavaScript, the uniformity of the language is greater and the work is more comprehensive for those involved in the project, be it a front-end, back-end or full stack dev.
-  * And if a programmer understands the fundamentals of the language well, he will be able to write in all layers as well, reducing bottlenecks where development stalls because half the team waits for the back-end people to finish something, for example.
-  * If a team is good at JavaScript, it's already a step for everyone to be, in a way, full stack, that is, able to work in both layers of the application. And a full stack team is more versatile, agile and better understands the product as a whole.
-  * Another very significant advantage is the possibility of reusing the code. Reusing code snippets that have already been made is a way to reduce the workload of developers and speed up project completion.
-  * And with MongoDB, you can even use JavaScript in the database. This actually makes all the flow of an object in an application to be done with JavaScript.
-  * You can take input into the browser with JavaScript, transport the demand to the back end still with the language, and finally save an object in MongoDB still with JavaScript. Of course, reverse flow will also be just as practical.
-
-* ## Python
-  * Was chosen to make the CLI just to present the advantages of working with the backend decoupled from the frontend 
-
-* ## MySQL
-  * Security
-  * Open code
-  * Ease of use
-  * Compatibility
-  * Community support 
-
-
-# DeadLines
-To confidently complete the project I would estimate 2 iterations of 2 weeks each (30 days or so), taking into account all the missing points...
