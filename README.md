@@ -1,6 +1,7 @@
 # Table of contents
 * [Challenge](#challenge)
 * [Solution](#solution)
+  * [Disclaimer]()  
 * [How to run]()
 * [The whys...?]()
 * [LinkedIn Profile](https://www.linkedin.com/in/alrtas/)
@@ -41,6 +42,8 @@ Defined that we will use dockers, first we build the docker responsible for uplo
 For the Backend, we will also have a Docker that will run a Nodejs/Express application, where it will connect to the Database Docker using the IP `172.17.0.1`, if the database does not have this IP, it does if necessary change the IP in the `path-to-project\backend\src\infrastructure\connection.js` file, as well as other connection details, once connected the backend will create the `Sales` and `Sellers` tables if necessary. they do not yet exist and then will create 5 sellers already pre-defined as the table below will show, also only if they do not exist. After all the database connection is OK, the Backend will provide **2 endpoints**, a CRUD for the Sales entity and also a CRUD for the Sellers entity. In the POST option (Creation) of a Sale there is a business rule that validates if the name of the seller passed on the body matches any seller name already in the Sellers base. And there is an additional 1 path within the Sellers endpoint that lists, in order from largest to smallest, the sellers with the greatest sum of sales.
 
 To complete the challenge, in Frontend there is another application (Docker) running in Python that implements a simple CLI system, where it is possible to create a Sale and it is also possible to show a list of sellers with the highest sum of sales value
+
+## Disclaimer
 
 
 ## Stack
@@ -133,3 +136,4 @@ If you try to make a sale with a different vendor name than the one that is init
 In addition, another service (docker) was also developed using React.js to create a simple interface where it is possible to create and edit sales as well as see the results of the best sellers.
 ![image](https://user-images.githubusercontent.com/32065208/138577748-bf5b83f5-d702-4c89-8079-c0242272f688.png)
 
+# The Whys
