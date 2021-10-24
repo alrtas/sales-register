@@ -130,4 +130,6 @@ If you try to make a sale with a different vendor name than the one that is init
 
 * ![image](https://user-images.githubusercontent.com/32065208/138573770-5afd067d-317b-4f5c-a32f-80465b0d964b.png)
 
+In addition, another service (docker) was also developed using React.js to create a simple interface where it is possible to create and edit sales as well as see the results of the best sellers.
+![image](https://user-images.githubusercontent.com/32065208/138577748-bf5b83f5-d702-4c89-8079-c0242272f688.png)
 
